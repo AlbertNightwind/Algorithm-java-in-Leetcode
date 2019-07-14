@@ -1,0 +1,64 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+//import java.Math;
+class Solution {
+    public int level = 1;
+    TreeNode prev = null;
+    public int maxDepth(TreeNode root) {
+        
+        if(root == null){
+            return 0;
+        }
+        else if(root.right == null&&root.left == null){
+            return 1;
+        }
+        else{
+            int level_ = Node_check(root);//How many nodes?
+            int result = (int)log2(level_)+1;
+            return result;            
+        }
+
+    }
+    
+    public int Node_check(TreeNode root){
+   
+        if(root!= null){
+            
+            if(root.left!=null){
+                level++;
+                TreeNode root1 = root.left;
+                Node_check(root1);
+                
+            }
+            
+            if(root.right!=null){
+                level++;
+                TreeNode root2 = root.right;
+                Node_check(root2); 
+            }               
+    
+            
+            //if(root.right!=null)
+            
+            //root = root.right;
+                   
+        }
+        //root = root.right;
+     //   level++;
+        return level;
+    }
+    public static double logb( double a, double b ){
+        return Math.log(a) / Math.log(b);
+    }
+
+    public static double log2( double a ){
+        return logb(a,2);
+    }
+}
