@@ -1,0 +1,26 @@
+class Solution {
+    public int reverse(int x) {
+     
+        long abs_number = Math.abs(x);
+        long num = 0;
+        while(abs_number!=0){
+            long mod = abs_number%10;
+            abs_number = abs_number/10;
+            num = num*10+mod;
+            
+          
+        }
+        StringBuffer buffer = new StringBuffer(Long.toString(num));
+        if(x<0) 
+            buffer.insert(0,"-");
+ 
+        try{
+            return Integer.parseInt(buffer.toString());
+        }
+        catch( NumberFormatException e){
+            return 0;
+        }        
+        
+
+    }
+}
